@@ -5,13 +5,12 @@ import Movie from '../components/Movie';
 
 class Main extends React.Component {
     state = {
-        show: 'index', // index, search, movie
-        movies: [], // массив найденных фильмов
-        movie: {}, // информация о фильме
-        loading: true, // идет запрос к серверу?
+        show: 'index', 
+        movies: [], 
+        movie: {}, 
+        loading: true, 
     }
 
-    // пользователь набрал поисковый запрос и нажал Enter
     handleEnter = (search, type) => {
         if (search.trim() === "") return;
         this.setState({
@@ -19,7 +18,7 @@ class Main extends React.Component {
             show: 'search'
         });
         search = encodeURIComponent(search);
-        let url = `http://www.omdbapi.com/?apikey=5f29dc7d&s=${search}`;
+        let url = `http://www.omdbapi.com/?apikey=c217e7b5&s=${search}`;
         if (type !== 'all') {
             url = url + `&type=${type}`;
         }
@@ -33,14 +32,13 @@ class Main extends React.Component {
             });
     }
 
-    // пользователь кликнул ссылке по «Read more» для просмотра
-    // подробной информации по найденному фильму или сериалу
+
     handleReadMore = (id) => {
         this.setState({
             loading: true,
             show: 'movie'
         });
-        fetch(`http://www.omdbapi.com/?apikey=5f29dc7d&i=${id}&plot=full`)
+        fetch(`http://www.omdbapi.com/?apikey=c217e7b5&i=${id}&plot=full`)
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -51,7 +49,7 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://www.omdbapi.com/?apikey=5f29dc7d&s=sonic')
+        fetch('http://www.omdbapi.com/?apikey=c217e7b5&s=sonic')
             .then(response => response.json())
             .then(data => {
                 this.setState({
