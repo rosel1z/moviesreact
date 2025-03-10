@@ -48,16 +48,7 @@ class Main extends React.Component {
             });
     }
 
-    componentDidMount() {
-        fetch('http://www.omdbapi.com/?apikey=c217e7b5&s=sonic')
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    movies: data.Search ? data.Search : [],
-                    loading: false
-                });
-            });
-    }
+    
 
     render() {
         return (
